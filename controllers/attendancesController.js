@@ -405,6 +405,9 @@ exports.check_in_attendance_by_user_id = [
       `field 'long' value must be a float number between -180 and 180`
     )
     .toFloat(),
+  body('file')
+    .exists()
+    .withMessage(`Required 'file' not found in request body`),
   async (req, res, next) => {
     // Check validation result
     const errors = validationResult(req);
