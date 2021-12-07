@@ -4,9 +4,35 @@ const router = express.Router();
 const attendancesController = require('../controllers/attendancesController');
 const authenticateAccessToken = require('../middleware/authenticateAccessToken');
 
-// multer config 
+// ========== multer config ========== 
 const multer = require('multer');
-const upload = multer({dest:'uploads/'});
+
+// storage destination and filename renaming
+const multerStorage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "uploads");
+  },
+  filename: (req, file, cb) => {
+    const ext = file.mimetype.split("/")[1];
+    cb(null, `${file.fieldname}-${Date.now()}.${ext}`);
+  },
+});
+
+// file filter
+const multerFilter = (req, file, cb) => {
+  if (file.mimetype.split("/")[1] === ("jpg" || "png")) {
+    cb(null, true);
+  } else {
+    cb(new Error("Not a image file!!"), false);
+  }
+};
+
+// call multer upload function
+const upload = multer({
+  storage: multerStorage,
+  fileFilter: multerFilter,
+});
+// ========== /multer config ========== 
 
 router.use(authenticateAccessToken);
 
