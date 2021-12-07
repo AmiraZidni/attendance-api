@@ -429,12 +429,12 @@ exports.check_in_attendance_by_user_id = [
         req.account.id
       );
 
-      // Check if user can check in
-      if (!userStatus.canCheckIn) {
-        return res.status(403).json({
-          message: 'Cannot check in this user. User already checked in today',
-        });
-      }
+      // // Check if user can check in
+      // if (!userStatus.canCheckIn) {
+      //   return res.status(403).json({
+      //     message: 'Cannot check in this user. User already checked in today',
+      //   });
+      // }
 
       // Calculate distance between user and the office
       const distance = getDistance(

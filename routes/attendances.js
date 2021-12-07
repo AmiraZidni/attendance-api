@@ -4,6 +4,10 @@ const router = express.Router();
 const attendancesController = require('../controllers/attendancesController');
 const authenticateAccessToken = require('../middleware/authenticateAccessToken');
 
+// multer config 
+const multer = require('multer');
+const upload = multer({dest:'uploads/'});
+
 router.use(authenticateAccessToken);
 
 /* 
@@ -33,6 +37,7 @@ Check in attendance of current user
 */
 router.post(
   '/:userId/in',
+  upload.single('file'),
   attendancesController.check_in_attendance_by_user_id
 );
 
