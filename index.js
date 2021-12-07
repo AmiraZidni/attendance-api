@@ -39,6 +39,9 @@ app.use(helmet());
 app.use(cors({exposedHeaders: 'New_access_token'}));
 
 // Routes
+app.use('/v1/', (req, res, next) => {
+  res.status(200).send("OK");
+});
 app.use('/v1/accounts', accountsRouter);
 app.use('/v1/admin', adminRouter);
 app.use('/v1/attendances', attendancesRouter);
@@ -57,3 +60,5 @@ const port = process.env.PORT || 3000;
 
 // Start listening on the port
 app.listen(port, () => console.log(`Listening on port ${port}`));
+
+module.exports = app;

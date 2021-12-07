@@ -8,7 +8,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "devStart": "nodemon index.js --trace-sync-io"
+    "devStart": "nodemon index.js --trace-sync-io",
+    "test": "mocha"
   },
   "keywords": [],
   "author": "",
