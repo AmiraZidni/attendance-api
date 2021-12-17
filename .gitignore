@@ -4,6 +4,5 @@ node_modules
 db-script
 uploads
 test/transaction.js
-.gitignore
 test/details.js
 test/inquiry.js
