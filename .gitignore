@@ -3,3 +3,7 @@ node_modules
 .env
 db-script
 uploads
+test/transaction.js
+.gitignore
+test/details.js
+test/inquiry.js

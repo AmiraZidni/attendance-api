@@ -6,7 +6,6 @@ var expect = chai.expect;
 
 chai.use(chaiHttp);
 
-
 describe('Attendance App', function() {
     it('should responds with status 200 and OK', function(done) {
         chai.request(app)
